@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results 2026 Live Updates - 11:20 AM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #e63946;
+            --accent-color: #f39c12;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #1c1e21;
+        }
+
+        body {
+            font-family: 'Roboto', 'Noto Sans Telugu', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, #003366, #001a33);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .live-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            margin: 40px 0 20px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            background-color: #2c3e50;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        .image-prompt-overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            color: #ecf0f1;
+            font-size: 0.75rem;
+            padding: 10px;
+            width: 100%;
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        .update-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-color);
+            color: #000;
+            padding: 4px 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4b4f56;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: auto;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hashtags {
+            color: #5dade2;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        @media (max-width: 600px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="live-tag">● LIVE: May 4, 2026</div>
+    <h1>ఎలక్షన్ రిజల్ట్స్ 2026 - లైవ్ అప్‌డేట్స్</h1>
+    <p>బెంగాల్, తమిళనాడు, కేరళ, అస్సాం, పుదుచ్చేరి ఫలితాలు</p>
+</header>
+
+<div class="container">
+    
+    <h2 class="section-title">లేటెస్ట్ అప్‌డేట్స్ (11:20 AM తర్వాత)</h2>
+    <div class="news-grid">
+
+        <!-- NEW Card 1 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Massive BJP victory wave in WB]
+                <div class="image-prompt-overlay">Prompt: Cinematic photo-realistic news thumbnail showing massive BJP victory wave in West Bengal... 8k news style.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">1. Bengal లో BJP మహా వేవ్! 175 సీట్లు దాటిన లేటెస్ట్ అప్‌డేట్ 🔥🚨</h2>
+                <p class="card-description">మే 4 మధ్యాహ్నం 11:20 తర్వాత లైవ్ ట్రెండ్స్ ప్రకారం వెస్ట్ బెంగాల్ లో BJP 175 సీట్లు దాటి మేజారిటీ క్రాస్ చేసింది. TMC 115కి పడిపోయింది. భవానీపూర్ లో సువేందు మమతా పై లీడ్ కొనసాగుతోంది.</p>
+                <a href="https://www.ndtv.com/india-news/west-bengal-election-results-2026-live-updates-vote-counting-tmc-vs-bjp-vs-left-congress-trinamool-11443657" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 2 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Vijay waving to TVK supporters]
+                <div class="image-prompt-overlay">Prompt: Thalapathy Vijay waving to ecstatic young crowd with TVK flags in Tamil Nadu... vibrant colors.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">2. TN లో TVK 105+ లీడ్! విజయ్ సూపర్ సర్‌ప్రైజ్ 💥🎥</h2>
+                <p class="card-description">తమిళనాడు లైవ్ కౌంటింగ్ లో 11:20 AM తర్వాత థలపతి విజయ్ TVK 105 సీట్లు దాటి లీడ్ చేస్తోంది. AIADMK 75, DMK 47కి పడిపోయాయి. స్టాలిన్ కొలాత్తూర్ లో ట్రైల్.</p>
+                <a href="https://www.thehindu.com/elections/tamil-nadu-assembly/tamil-nadu-assembly-election-results-live-updates-4-may-2026/article70934968.ece" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 3 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Kerala UDF Celebration]
+                <div class="image-prompt-overlay">Prompt: Kerala UDF leaders celebrating with Congress flags, Pinarayi Vijayan disappointed...</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">3. Kerala లో UDF 100+ లీడ్! పినరయి షాక్ అప్‌డేట్ 😱</h2>
+                <p class="card-description">కేరళ లైవ్ ట్రెండ్స్ లో 11:24 AM అప్‌డేట్ ప్రకారం UDF 100 సీట్లు దాటి లీడ్ చేస్తోంది. LDF 40కి పడిపోయింది. CM పినరయి ధర్మదం లో ట్రైల్ అవుతున్నట్టు లేటెస్ట్ న్యూస్.</p>
+                <a href="https://www.thehindu.com/elections/kerala-assembly/kerala-election-results-live-updates-4-may-2026/article70935144.ece" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 4 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Himanta Biswa Sarma Hat-trick]
+                <div class="image-prompt-overlay">Prompt: Himanta Biswa Sarma celebrating with massive crowd and BJP lotus flags in Assam...</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">4. Assam లో BJP హ్యాట్రిక్ ట్రెండ్! హిమంత లేటెస్ట్ అప్‌డేట్ 🎉</h2>
+                <p class="card-description">అస్సాం లైవ్ కౌంటింగ్ లో BJP+ కంఫర్టబుల్ లీడ్ తో హ్యాట్రిక్ దిశగా ముందుకు వెళ్తోంది. హిమంత బిస్వా సర్మా లీడర్‌షిప్ లో బీజేపీ దబ్బా కొనసాగుతోంది.</p>
+                <a href="https://www.ndtv.com/india-news/assam-election-results-2026-live-updates-vote-counting-results-himanta-biswa-sarma-bjp-congress-11442174" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 5 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Bhabanipur Suvendu vs Mamata]
+                <div class="image-prompt-overlay">Prompt: Close-up of Suvendu Adhikari leading against Mamata Banerjee in Bhabanipur... tense expressions.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">5. భవానీపూర్ లైవ్ డ్రామా! సువేందు మమతా పై లీడ్</h2>
+                <p class="card-description">బెంగాల్ హాట్ సీట్ భవానీపూర్ లో సువేందు అధికారి మమతా బెనర్జీ పై లీడ్ కొనసాగుతోంది. 11:15 తర్వాత అప్‌డేట్స్ తో హై డ్రామా కొనసాగుతోంది!</p>
+                <a href="https://www.ndtv.com/india-news/west-bengal-election-results-2026-live-updates-vote-counting-tmc-vs-bjp-vs-left-congress-trinamool-11443657" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 6 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Puducherry NDA Scene]
+                <div class="image-prompt-overlay">Prompt: Puducherry election scene with NDA leaders celebrating... beachside flags.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">6. Puducherry లో NDA స్ట్రాంగ్ లీడ్! లేటెస్ట్ ట్రెండ్</h2>
+                <p class="card-description">పుదుచ్చేరి లైవ్ కౌంటింగ్ లో NDA కంఫర్టబుల్ లీడ్ కొనసాగుతోంది. TVK కొన్ని సీట్లలో ఇంపాక్ట్ చూపిస్తోంది. కాంగ్రెస్ కి భారీ సెట్‌బ్యాక్.</p>
+                <a href="https://indianexpress.com/article/india/assembly-election-results-2026-live-updates-west-bengal-tamil-nadu-kerala-puducherry-assam-bjp-tmc-dmk-10665543/" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 7 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: TVK Victory Streets]
+                <div class="image-prompt-overlay">Prompt: Excited young crowd cheering Thalapathy Vijay TVK victory in TN streets... perfect thumbnail quality.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">7. TVK TN లో మెజారిటీ మార్క్ దాటిన లేటెస్ట్!</h2>
+                <p class="card-description">తమిళనాడు లైవ్ ట్రెండ్స్ లో 11:20 AM అప్‌డేట్ ప్రకారం TVK మెజారిటీ మార్క్ దాటిన సూచనలు. విజయ్ ఫ్యాన్స్ వేవ్ తో కొత్త చరిత్ర సృష్టి అవుతోంది.</p>
+                <a href="https://www.ndtv.com/india-news/election-results-2026-live-updates-west-bengal-tamil-nadu-kerala-assam-puducherry-vote-counting-bjp-tmc-mamata-banerjee-tvk-vijay-dmk-udf-ldf-congress-11443744" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 8 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Bengal Saffron Wave]
+                <div class="image-prompt-overlay">Prompt: Epic cinematic photo of BJP saffron wave sweeping West Bengal... dramatic sky.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">8. Bengal BJP 175+ లీడ్! TMC కి భారీ షాక్ అప్‌డేట్</h2>
+                <p class="card-description">వెస్ట్ బెంగాల్ లైవ్ లో 11:15 AM తర్వాత BJP 175 సీట్లు దాటిన ట్రెండ్స్. మమతా గవర్నమెంట్ కి ఎండ్ ఆఫ్ ఎరా సిగ్నల్స్.</p>
+                <a href="https://www.thehindu.com/elections/west-bengal-assembly/west-bengal-election-results-live-updates-may-4-2026/article70934929.ece" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 9 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: 5 States Map Trends]
+                <div class="image-prompt-overlay">Prompt: Professional collage news image of five Indian states live election maps with latest trends...</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">9. 5 స్టేట్స్ లైవ్ ట్రెండ్స్: బిగ్ ట్విస్ట్స్ అప్‌డేట్!</h2>
+                <p class="card-description">మధ్యాహ్నం 11:20+ అప్‌డేట్స్ ప్రకారం బెంగాల్ లో BJP వేవ్, TN లో TVK సర్‌ప్రైజ్, కేరళ లో UDF లీడ్. జాతీయ రాజకీయాలపై భారీ ఇంపాక్ట్.</p>
+                <a href="https://www.ndtv.com/india-news/election-results-2026-live-updates-west-bengal-tamil-nadu-kerala-assam-puducherry-vote-counting-bjp-tmc-mamata-banerjee-tvk-vijay-dmk-udf-ldf-congress-11443744" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+
+        <!-- NEW Card 10 -->
+        <article class="card">
+            <div class="card-image">
+                <div class="update-badge">NEW UPDATE</div>
+                [Image: Vijay TVK Explode]
+                <div class="image-prompt-overlay">Prompt: Vijay supporters celebrating TVK lead in TN, actor portrait with flags, youthful crowd...</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">10. Vijay TVK TN లో ఎక్స్‌ప్లోడ్! యంగ్ వేవ్ లేటెస్ట్</h2>
+                <p class="card-description">తమిళనాడు లైవ్ ట్రెండ్స్ లో విజయ్ TVK బలంగా 105+ లీడ్. యంగ్ జనరేషన్ సపోర్ట్ తో కొత్త చరిత్ర. 11:15 AM తర్వాత అప్‌డేట్స్ వైరల్!</p>
+                <a href="https://www.thehindu.com/elections/tamil-nadu-assembly/tamil-nadu-assembly-election-results-live-updates-4-may-2026/article70934968.ece" class="btn" target="_blank">పూర్తి వివరాలు</a>
+            </div>
+        </article>
+    </div>
+
+    <!-- PREVIOUS UPDATES SECTION -->
+    <h2 class="section-title">మొదటి ట్రెండ్స్ (మునుపటి అప్‌డేట్స్)</h2>
+    <div class="news-grid">
+        <!-- Original Card 1 (150+ seats) -->
+        <article class="card">
+            <div class="card-image">
+                [Image: Bengal BJP 150+]
+                <div class="image-prompt-overlay">Prompt: Cinematic news thumbnail... BJP leaders celebrating with saffron flags...</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Bengal లో BJP మహా వేవ్! 150+ సీట్లు దాటిన లేటెస్ట్ అప్‌డేట్ 🔥🚨</h2>
+                <p class="card-description">వెస్ట్ బెంగాల్ కౌంటింగ్ లో BJP బలంగా ముందుకు వస్తోంది. BJP 150+ సీట్లు దాటిన సూచనలు, TMC కి షాక్.</p>
+                <a href="https://www.thehindu.com/elections/west-bengal-assembly/west-bengal-election-results-live-updates-may-4-2026/article70934929.ece" class="btn" target="_blank">చదవండి</a>
+            </div>
+        </article>
+
+        <!-- Original Card 2 (TN 100+) -->
+        <article class="card">
+            <div class="card-image">
+                [Image: Vijay TN 100+]
+                <div class="image-prompt-overlay">Prompt: Thalapathy Vijay celebrating victory with huge crowd... cinematic news style.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">TN లో TVK సూపర్ సర్‌ప్రైజ్! విజయ్ 100+ లీడ్ 💥🎥</h2>
+                <p class="card-description">తమిళనాడు లైవ్ కౌంటింగ్ లో థలపతి విజయ్ TVK 100+ సీట్లు లీడ్ చేస్తూ బిగ్ షాక్. DMK కి భారీ సెట్‌బ్యాక్.</p>
+                <a href="https://www.thehindu.com/elections/tamil-nadu-assembly/tamil-nadu-assembly-election-results-live-updates-4-may-2026/article70934968.ece" class="btn" target="_blank">చదవండి</a>
+            </div>
+        </article>
+
+        <!-- Original Card 3 (Kerala 92+) -->
+        <article class="card">
+            <div class="card-image">
+                [Image: Kerala UDF 92+]
+                <div class="image-prompt-overlay">Prompt: Kerala election results, UDF leaders cheering... Pinarayi disappointed.</div>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Kerala లో UDF బిగ్ కమ్‌బ్యాక్! పినరయి షాక్ 😱</h2>
+                <p class="card-description">కేరళ ఎలక్షన్ లైవ్ ట్రెండ్స్ లో UDF 92+ సీట్లు దాటి మేజారిటీ. పినరయి రూల్ ముగిసే సూచనలు.</p>
+                <a href="https://www.thehindu.com/elections/kerala-assembly/kerala-election-results-live-updates-4-may-2026/article70935144.ece" class="btn" target="_blank">చదవండి</a>
+            </div>
+        </article>
+
+        <!-- ... Other original articles would follow here in a real scenario ... -->
+        
+    </div>
+</div>
+
+<footer>
+    <div class="hashtags">
+        #ElectionResults2026 #BengalBJPWave #TVKRevolution #VijayPolitics #KeralaUDF #AssamBJP #LiveCounting #SumanTVNews #TeluguElectionUpdate #Post11AMUpdate
+    </div>
+    <p>&copy; 2026 Election Analysis Portal | Real-time Telugu News Dashboard</p>
+</footer>
+
+</body>
+</html>
