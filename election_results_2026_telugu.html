@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 ఎలక్షన్ రిజల్ట్స్ లైవ్ అప్‌డేట్</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f4f2;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* TOP NAV */
+    .top-nav {
+      background: #1a1a1a;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .nav-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #E24B4A;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E24B4A;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    /* HERO HEADER */
+    .hero {
+      background: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(255,255,255,0.02) 30px,
+        rgba(255,255,255,0.02) 60px
+      );
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #E24B4A;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .hero p {
+      font-size: 14px;
+      color: #aaa;
+      position: relative;
+    }
+    .hero-date {
+      font-size: 12px;
+      color: #666;
+      margin-top: 6px;
+      position: relative;
+    }
+
+    /* SUMMARY STRIP */
+    .summary-strip {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .summary-strip::-webkit-scrollbar { height: 3px; }
+    .summary-strip::-webkit-scrollbar-thumb { background: #ddd; }
+    .sum-item {
+      flex: 1;
+      min-width: 130px;
+      padding: 14px 16px;
+      text-align: center;
+      border-right: 1px solid #f0f0f0;
+    }
+    .sum-item:last-child { border-right: none; }
+    .sum-party { font-size: 18px; font-weight: 700; }
+    .sum-state { font-size: 11px; color: #888; margin-top: 2px; }
+    .sum-trend { font-size: 11px; font-weight: 600; margin-top: 4px; padding: 2px 8px; border-radius: 3px; display: inline-block; }
+
+    /* TABS */
+    .tabs-wrap { background: #fff; padding: 0 24px; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 10; }
+    .tabs { display: flex; gap: 0; overflow-x: auto; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .tab:hover { color: #1a1a1a; }
+    .tab.active { color: #E24B4A; border-bottom-color: #E24B4A; }
+
+    /* MAIN CONTENT */
+    .main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      padding: 14px 16px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .card-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.45;
+    }
+
+    .card-body { padding: 14px 16px; }
+    .card-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .state-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .read-link {
+      font-size: 12px;
+      color: #185FA5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .read-link:hover { text-decoration: underline; }
+
+    /* BREAKING TICKER */
+    .ticker-wrap {
+      background: #E24B4A;
+      color: #fff;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: scroll-left 40s linear infinite;
+      font-size: 13px;
+      font-weight: 500;
+      padding-left: 100%;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .ticker-sep { margin: 0 20px; opacity: 0.6; }
+
+    /* HIDDEN */
+    .hidden { display: none !important; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a1a;
+      color: #666;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
+    footer a { color: #aaa; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .sum-item { min-width: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <div class="nav-brand">సుమన్ TV న్యూస్ · తెలుగు</div>
+    <div class="nav-live">
+      <div class="live-dot"></div>
+      LIVE COUNTING
+    </div>
+  </div>
+
+  <!-- BREAKING TICKER -->
+  <div class="ticker-wrap">
+    <span class="ticker-inner">
+      🔴 BREAKING: Bengal లో BJP 150+ సీట్లు లీడ్ <span class="ticker-sep">|</span>
+      TN లో TVK 100+ సీట్లు సర్‌ప్రైజ్ లీడ్ <span class="ticker-sep">|</span>
+      Kerala లో UDF 92+ సీట్లు మేజారిటీ <span class="ticker-sep">|</span>
+      Assam లో BJP హ్యాట్రిక్ <span class="ticker-sep">|</span>
+      Puducherry లో NDA స్ట్రాంగ్ లీడ్ <span class="ticker-sep">|</span>
+      భవానీపూర్ లో సువేందు vs మమతా హై డ్రామా <span class="ticker-sep">|</span>
+      మే 4, 2026 · లైవ్ కౌంటింగ్ అప్‌డేట్స్
+    </span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">LIVE · MAY 4, 2026</div>
+    <h1>2026 ఎలక్షన్ రిజల్ట్స్ లైవ్ అప్‌డేట్</h1>
+    <p>బెంగాల్ · తమిళనాడు · కేరళ · అస్సాం · పుదుచ్చేరి</p>
+    <div class="hero-date">కౌంటింగ్ జరుగుతోంది — లేటెస్ట్ ట్రెండ్స్ ఇక్కడ చూడండి</div>
+  </div>
+
+  <!-- SUMMARY STRIP -->
+  <div class="summary-strip">
+    <div class="sum-item">
+      <div class="sum-party" style="color:#E24B4A;">BJP+</div>
+      <div class="sum-state">West Bengal</div>
+      <div class="sum-trend" style="background:#FCEBEB;color:#A32D2D;">150+ లీడ్</div>
+    </div>
+    <div class="sum-item">
+      <div class="sum-party" style="color:#185FA5;">TVK</div>
+      <div class="sum-state">Tamil Nadu</div>
+      <div class="sum-trend" style="background:#E6F1FB;color:#185FA5;">100+ లీడ్</div>
+    </div>
+    <div class="sum-item">
+      <div class="sum-party" style="color:#0F6E56;">UDF</div>
+      <div class="sum-state">Kerala</div>
+      <div class="sum-trend" style="background:#E1F5EE;color:#0F6E56;">92+ లీడ్</div>
+    </div>
+    <div class="sum-item">
+      <div class="sum-party" style="color:#854F0B;">BJP+</div>
+      <div class="sum-state">Assam</div>
+      <div class="sum-trend" style="background:#FAEEDA;color:#854F0B;">హ్యాట్రిక్</div>
+    </div>
+    <div class="sum-item">
+      <div class="sum-party" style="color:#534AB7;">NDA</div>
+      <div class="sum-state">Puducherry</div>
+      <div class="sum-trend" style="background:#EEEDFE;color:#534AB7;">స్ట్రాంగ్ లీడ్</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <div class="tab active" onclick="filterCards('all', this)">అన్నీ చూడండి</div>
+      <div class="tab" onclick="filterCards('bengal', this)">🔴 బెంగాల్</div>
+      <div class="tab" onclick="filterCards('tn', this)">🔵 తమిళనాడు</div>
+      <div class="tab" onclick="filterCards('kerala', this)">🟢 కేరళ</div>
+      <div class="tab" onclick="filterCards('assam', this)">🟡 అస్సాం</div>
+      <div class="tab" onclick="filterCards('puducherry', this)">🟣 పుదుచ్చేరి</div>
+      <div class="tab" onclick="filterCards('all5', this)">🗺️ 5 స్టేట్స్</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="cards-grid" id="cards-grid">
+
+      <!-- Card 1 -->
+      <div class="card" data-state="bengal">
+        <div class="card-top">
+          <div class="card-num" style="background:#FCEBEB;color:#A32D2D;">1</div>
+          <div class="card-title">Bengal లో BJP మహా వేవ్! 150+ సీట్లు దాటిన లేటెస్ట్ అప్‌డేట్ 🔥</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">వెస్ట్ బెంగాల్ కౌంటింగ్ లో BJP బలంగా ముందుకు వస్తోంది. లేటెస్ట్ ట్రెండ్స్ ప్రకారం BJP 150+ సీట్లు దాటిన సూచనలు, TMC కి షాక్. భవానీపూర్ లో సువేందు మమతా పై లీడ్ కొనసాగుతోంది. మమతా రూల్ ముగిసే అవకాశాలు ఎక్కువ. హై డ్రామా లైవ్ అప్‌డేట్స్ తెలుగు ప్రజలు ఫుల్ ఆన్ ఫాలో అవుతున్నారు!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#FCEBEB;color:#A32D2D;">West Bengal</span>
+            <a class="read-link" href="https://www.thehindu.com/elections/west-bengal-assembly/west-bengal-election-results-live-updates-may-4-2026/article70934929.ece" target="_blank">The Hindu చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" data-state="tn">
+        <div class="card-top">
+          <div class="card-num" style="background:#E6F1FB;color:#185FA5;">2</div>
+          <div class="card-title">TN లో TVK సూపర్ సర్‌ప్రైజ్! విజయ్ 100+ లీడ్ 💥</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">తమిళనాడు లైవ్ కౌంటింగ్ లో థలపతి విజయ్ TVK 100+ సీట్లు లీడ్ చేస్తూ బిగ్ షాక్. DMK కి భారీ సెట్‌బ్యాక్, AIADMK తో టైట్ ఫైట్. యంగ్ వోటర్స్ వేవ్ తో TVK హిస్టరీ సృష్టిస్తోంది. చెన్నై అన్ని సీట్లు లీడ్, హై వైరల్ లేటెస్ట్ అప్‌డేట్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#E6F1FB;color:#185FA5;">Tamil Nadu</span>
+            <a class="read-link" href="https://www.thehindu.com/elections/tamil-nadu-assembly/tamil-nadu-assembly-election-results-live-updates-4-may-2026/article70934968.ece" target="_blank">The Hindu చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" data-state="kerala">
+        <div class="card-top">
+          <div class="card-num" style="background:#E1F5EE;color:#0F6E56;">3</div>
+          <div class="card-title">Kerala లో UDF బిగ్ కమ్‌బ్యాక్! పినరయి షాక్ 😱</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">కేరళ ఎలక్షన్ లైవ్ ట్రెండ్స్ లో UDF 92+ సీట్లు దాటి మేజారిటీ. LDF కి భారీ డీఫీట్, పినరయి రూల్ ముగిసే సూచనలు. దక్షిణ భారత రాజకీయాల్లో కొత్త ట్విస్ట్. తెలుగు ఆడియన్స్ ఎంతో ఆసక్తిగా చూస్తున్న బ్రేకింగ్ అప్‌డేట్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#E1F5EE;color:#0F6E56;">Kerala</span>
+            <a class="read-link" href="https://www.thehindu.com/elections/kerala-assembly/kerala-election-results-live-updates-4-may-2026/article70935144.ece" target="_blank">The Hindu చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" data-state="assam">
+        <div class="card-top">
+          <div class="card-num" style="background:#FAEEDA;color:#854F0B;">4</div>
+          <div class="card-title">Assam లో BJP హ్యాట్రిక్! హిమంత గ్రాండ్ విన్ 🎉</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">అస్సాం లైవ్ కౌంటింగ్ లో BJP+ కంఫర్టబుల్ మేజారిటీ. హిమంత బిస్వా సర్మా లీడర్‌షిప్ తో హ్యాట్రిక్ సాధిస్తోంది. కాంగ్రెస్ కి సెట్‌బ్యాక్. నార్త్ ఈస్ట్ లో BJP దబ్బా కొనసాగుతోంది. జాతీయ ఇంపాక్ట్ ఉన్న లేటెస్ట్ న్యూస్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#FAEEDA;color:#854F0B;">Assam</span>
+            <a class="read-link" href="https://www.ndtv.com/india-news/election-results-2026-live-updates-west-bengal-tamil-nadu-kerala-assam-puducherry-vote-counting-bjp-tmc-mamata-banerjee-tvk-vijay-dmk-udf-ldf-congress-11443744" target="_blank">NDTV చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card" data-state="bengal">
+        <div class="card-top">
+          <div class="card-num" style="background:#FCEBEB;color:#A32D2D;">5</div>
+          <div class="card-title">భవానీపూర్ హై డ్రామా! సువేందు vs మమతా లేటెస్ట్</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">బెంగాల్ హాట్ సీట్ భవానీపూర్ లో సువేందు అధికారి మమతా పై లీడ్ కొనసాగుతోంది. మమతా కెరీర్ లో క్రూషియల్ మూమెంట్. BJP వేవ్ తో TMC షేక్ అవుతోంది. లైవ్ టెన్షన్ నిండిన అప్‌డేట్స్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#FCEBEB;color:#A32D2D;">West Bengal</span>
+            <a class="read-link" href="https://indianexpress.com/article/india/assembly-election-results-2026-live-updates-west-bengal-tamil-nadu-kerala-puducherry-assam-bjp-tmc-dmk-10665543/" target="_blank">Indian Express చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card" data-state="puducherry">
+        <div class="card-top">
+          <div class="card-num" style="background:#EEEDFE;color:#534AB7;">6</div>
+          <div class="card-title">Puducherry లో NDA లీడ్! TVK ఇంపాక్ట్ అప్‌డేట్</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">పుదుచ్చేరి లైవ్ ట్రెండ్స్ లో NDA స్ట్రాంగ్ లీడ్. TVK కొన్ని సీట్లలో సర్‌ప్రైజ్ ఇంపాక్ట్. కాంగ్రెస్ కి సెట్‌బ్యాక్. సౌత్ ఇండియా ట్రెండ్స్ లో హాట్ అప్‌డేట్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#EEEDFE;color:#534AB7;">Puducherry</span>
+            <a class="read-link" href="https://www.thehindu.com/elections/puducherry-assembly/puducherry-election-results-live-updates-may-4-2026/article70935521.ece" target="_blank">The Hindu చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card" data-state="bengal">
+        <div class="card-top">
+          <div class="card-num" style="background:#FCEBEB;color:#A32D2D;">8</div>
+          <div class="card-title">Bengal BJP మెజారిటీ క్రాస్! TMC షాక్ అప్‌డేట్</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">వెస్ట్ బెంగాల్ లైవ్ లో BJP మెజారిటీ మార్క్ దాటిన ట్రెండ్స్. 2021 తో పోలిస్తే భారీ గెయిన్. మమతా గవర్నమెంట్ కి ఎండ్ ఆఫ్ ఎరా సిగ్నల్స్. హై డ్రామా లేటెస్ట్ న్యూస్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#FCEBEB;color:#A32D2D;">West Bengal</span>
+            <a class="read-link" href="https://timesofindia.indiatimes.com/elections/assembly-elections/west-bengal/results" target="_blank">Times of India చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card" data-state="all5">
+        <div class="card-top">
+          <div class="card-num" style="background:#f0f0ee;color:#5F5E5A;">9</div>
+          <div class="card-title">5 స్టేట్స్ లైవ్: బిగ్ ట్విస్ట్స్ అప్‌డేట్!</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">మే 4 కౌంటింగ్ లో బెంగాల్ BJP, TN TVK, కేరళ UDF, అస్సాం BJP హ్యాట్రిక్, పుదుచ్చేరి NDA. ఎగ్జిట్ పోల్స్ కంటే భిన్న ట్రెండ్స్. జాతీయ రాజకీయాలపై ప్రభావం ఉన్న హాటెస్ట్ లేటెస్ట్ అప్‌డేట్స్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#f0f0ee;color:#5F5E5A;">5 స్టేట్స్</span>
+            <a class="read-link" href="https://indianexpress.com/article/india/assembly-election-results-2026-live-updates" target="_blank">Indian Express చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card" data-state="tn">
+        <div class="card-top">
+          <div class="card-num" style="background:#E6F1FB;color:#185FA5;">10</div>
+          <div class="card-title">Vijay Revolution TN లో ఎక్స్‌ప్లోడ్! యంగ్ వేవ్ అప్‌డేట్</div>
+        </div>
+        <div class="card-body">
+          <div class="card-desc">తమిళనాడు లైవ్ ట్రెండ్స్ లో విజయ్ TVK బలంగా ముందుకు. DMK కి ట్రబుల్, యంగ్ జనరేషన్ సపోర్ట్ తో కొత్త చరిత్ర. హై ఎమోషన్స్ తో వైరల్ అవుతున్న లేటెస్ట్ అప్‌డేట్!</div>
+          <div class="card-footer">
+            <span class="state-tag" style="background:#E6F1FB;color:#185FA5;">Tamil Nadu</span>
+            <a class="read-link" href="https://www.thehindu.com/elections/tamil-nadu-assembly/tamil-nadu-assembly-election-results-live-updates-4-may-2026/article70934968.ece" target="_blank">The Hindu చదవండి →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>#ElectionResults2026 &nbsp;|&nbsp; #BengalBJPWave &nbsp;|&nbsp; #TVKRevolution &nbsp;|&nbsp; #KeralaUDF &nbsp;|&nbsp; #AssamBJP &nbsp;|&nbsp; #SumanTVNews</p>
+    <p style="margin-top:8px;">సుమన్ TV తెలుగు న్యూస్ · మే 4, 2026 · లైవ్ కౌంటింగ్ అప్‌డేట్</p>
+  </footer>
+
+  <script>
+    function filterCards(state, el) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.card').forEach(card => {
+        if (state === 'all') {
+          card.style.display = '';
+        } else {
+          card.style.display = card.dataset.state === state ? '' : 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
